@@ -25,6 +25,10 @@ export async function generateInsights(analysis) {
     }
 
     if (isValidBundle(payload)) {
+      // If the API returned an empty insights array, prefer the local heuristic bundle
+      if (Array.isArray(payload.insights) && payload.insights.length === 0) {
+        return buildHeuristicInsightsBundle(analysis, { reason: payload.reason || 'Empty insights from API', source: 'api-empty' });
+      }
       return normalizeBundle(payload, analysis);
     }
 

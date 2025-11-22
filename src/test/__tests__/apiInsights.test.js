@@ -47,4 +47,22 @@ describe('insights API route', () => {
     expect(Array.isArray(payload.insights)).toBe(true);
     expect(payload.insights[0].title).toContain('Fix A');
   });
+
+  it('falls back when OpenAI responds with an empty insights array', async () => {
+    process.env.OPENAI_API_KEY = 'fake-key-xyz';
+    const fakeOpenAi = {
+      choices: [ { message: { content: JSON.stringify({ insights: [] }) } } ],
+      model: 'test-model'
+    };
+    global.fetch = vi.fn().mockResolvedValue({ ok: true, text: async () => JSON.stringify(fakeOpenAi) });
+
+    const req = new Request('http://localhost/api/insights', { method: 'POST', body: JSON.stringify({ analysis: simpleAnalysis }), headers: { 'Content-Type': 'application/json' } });
+    const res = await POST(req);
+    const payload = JSON.parse(await res.text());
+    // The server should detect the empty insights array and return heuristic output
+    expect(payload.source).toBeDefined();
+    expect(payload.source).toMatch(/openai-empty|heuristic-fallback/);
+    expect(Array.isArray(payload.insights)).toBe(true);
+    expect(payload.insights.length).toBeGreaterThan(0);
+  });
 });

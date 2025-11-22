@@ -65,6 +65,10 @@ async function analyzeQualityInsights({ analysis, model, apiKey }) {
   const data = await openaiChat(payload, apiKey);
   const assistantText = data.choices?.[0]?.message?.content ?? data.choices?.[0]?.text ?? JSON.stringify(data);
   const parsed = tryParseJson(assistantText) || tryExtractJson(assistantText);
+  // If model returned a parsed JSON with an empty insights array, prefer deterministic heuristics
+  if (parsed && Array.isArray(parsed.insights) && parsed.insights.length === 0) {
+    return buildHeuristicInsightsBundle(analysis, { reason: 'Model returned empty insights array', source: 'openai-empty' });
+  }
   const cards = normalizeInsights(parsed, analysis);
   if (cards.length) {
     return buildInsightBundle({
@@ -74,7 +78,10 @@ async function analyzeQualityInsights({ analysis, model, apiKey }) {
       model: data.model || model
     });
   }
-  const lineCards = linesToCards(splitLines(assistantText), analysis);
+  const rawLines = splitLines(assistantText);
+  // Filter out lines that are purely JSON punctuation / tokens or too small to be meaningful
+  const meaningfulLines = rawLines.filter(l => /\b[A-Za-z0-9]{3,}\b/.test(l));
+  const lineCards = linesToCards(meaningfulLines, analysis);
   if (lineCards.length) {
     return buildInsightBundle({
       analysis,
