@@ -23,7 +23,7 @@
 	font-size: 0.7rem;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	color: var(--color-muted);
+	color: var(--color-fg);
 }
 
 .preview-table th,
@@ -31,6 +31,7 @@
 	padding: 0.55rem 0.65rem;
 	border: 1px solid rgba(148,163,184,0.14);
 	text-align: left;
+	color: var(--color-fg);
 }
 
 .preview-table tbody tr:nth-child(odd) {
