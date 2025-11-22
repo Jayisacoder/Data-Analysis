@@ -20,3 +20,33 @@
 		grid-template-columns: 1fr;
 	}
 }
+
+/* High-contrast text for per-column details */
+.panel, .panel * {
+	color: var(--color-fg) !important;
+}
+
+/* Ensure the detailed per-column accordion uses high-contrast text */
+.detailed-accordion, .detailed-accordion * {
+	color: #ffffff !important;
+}
+
+.detailed-accordion .suggest-list li,
+.detailed-accordion .acc-row,
+.detailed-accordion .acc-panel {
+	color: #e6eef8 !important; /* slightly muted but readable on dark */
+}
+
+.panel h3, .panel-title {
+	color: var(--color-fg) !important;
+	font-weight: 700;
+}
+
+.panel .issue-item, .panel .stat-label, .panel .stat-value, .panel p {
+	color: var(--color-fg) !important;
+}
+
+/* Keep small supporting text slightly muted */
+.panel .suggest-list li, .panel .acc-row, .panel .acc-panel {
+	color: var(--color-muted);
+}

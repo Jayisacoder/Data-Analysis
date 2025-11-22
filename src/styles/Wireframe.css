@@ -250,6 +250,7 @@
 
 .acc-row {
   line-height: 1.35;
+  color: #ffffff; /* ensure rows are white by default inside accordions */
 }
 
 .suggest-list {
@@ -403,4 +404,8 @@
 
 .legend-box.outlier {
   background: var(--color-warn);
+}
+
+.acc-toggle {
+  color: #ffffff; /* ensure toggle headings are visible */
 }
