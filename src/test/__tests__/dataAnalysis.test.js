@@ -9,7 +9,8 @@ describe('dataAnalysis', () => {
   ];
   it('analyzes basic stats', () => {
     const result = analyzeData(rows);
-    expect(result.columns).toContain('a');
+    // `columns` returns a detailed array of column objects; ensure the name 'a' exists
+    expect(result.columns.map(c => c.name)).toContain('a');
     expect(result.stats.a.missing).toBe(1);
   });
   it('computes a quality score', () => {

@@ -47,6 +47,75 @@ An interactive Next.js application that:
 - Drill‑Down: per‑column stats & issues listing
 - Resilient Error Boundary & graceful fallbacks (no API key mode)
 
+## Project Requirements & Scope
+
+### Project Name
+
+Agentic Data Quality Platform
+
+### One-sentence description
+
+AI-augmented web app that profiles tabular datasets, surfaces data-quality metrics (completeness, uniqueness, validity), and generates prioritized remediation guidance for analysts.
+
+### Primary goal
+
+Deliver an approachable, practical data-quality analysis tool that lets non-engineer data consumers quickly understand dataset health, receive prioritized remediation guidance (AI + heuristics), and take action.
+
+### Success criteria
+
+- Users can upload a CSV/JSON/Excel file and receive an interactive profile (columns, missing counts, unique counts, outliers).
+- The app delivers prioritized remediation guidance via the AI insights endpoint, and falls back to deterministic heuristics when AI is unavailable.
+- The project includes automated tests (unit + route tests) and has a stable local dev flow + README for setup and running.
+
+### Target users
+
+Data analysts, engineers doing ad-hoc data exploration, and engineering students learning data quality best-practices.
+
+### User needs
+
+- Rapid dataset profiling with easy-to-read metrics and column summaries.
+- Clear, prioritized remediation guidance that is actionable (what to fix, why it matters, how to proceed).
+- Resilient behavior — helpful heuristics when AI service is unavailable, and a simple path to iterate on results.
+
+### MVP (must-have)
+
+1. File upload + parse (CSV/JSON/Excel) and schema detection.
+2. Column-level profiling (missing, unique, type, numeric outliers) and an overall quality score.
+3. AI-driven remediation insights endpoint with clear fallback heuristics and client-side UI to surface insights.
+
+### Should-have
+
+1. Persistent recent analyses and lightweight history (recent analyses panel on home screen).
+2. Basic dashboards / visualizations for outliers and distribution per column.
+
+### Could-have (stretch goals)
+
+1. Integration with monitoring / alerting tools (e.g., scheduled pipeline checks or Great Expectations style checks).
+2. Automated remediation helpers (generate SQL or transformation suggestions for common fixes; exportable change lists)
+
+### Technical stack summary
+
+- Frontend: Next.js 16 + React 18 (App Router)
+- Routing: App Router (file-based) with client/server boundaries for data and API calls
+- Data management: In-memory context (client-side profiling) with optional persistence for recent analyses
+- Styling: Custom CSS (design tokens in `src/app/globals.css` + component styles in `src/styles/*`)
+- API: Local `/api/insights` endpoint that integrates with OpenAI and a deterministic heuristics fallback when AI is unavailable
+
+### Typical timeline (14 days)
+
+- Sprint 1 (Days 1–3): Project setup, file parsing, schema detection, and basic profiling UI.
+- Sprint 2 (Days 4–7): Column metrics, quality scoring, basic dashboard and visualizations.
+- Sprint 3 (Days 8–10): AI-backed insights endpoint + deterministic heuristics fallback, client integration and UX.
+- Sprint 4 (Days 11–14): Tests, accessibility polish, UX improvements, deployment docs, and final delivery materials.
+
+### Deliverables / checklist
+
+- Deployed application (Vercel / Netlify or equivalent)
+- GitHub repository with README and clear setup instructions
+- Test suite for core modules and API routes (unit + route tests)
+- Project documentation and brief architecture notes
+- Presentation materials and demo notes for course submission
+
 ## 4. How It Works (Architecture)
 Client only. Parsing via Papa Parse / SheetJS. Profiling logic in `lib/dataAnalysis.js`. AI call (if key provided) via `/api/insights` endpoint using OpenAI; falls back to heuristic text if missing. State managed with React context (`lib/DataContext.jsx`). All styling is modular CSS in `src/styles`. Chart rendering handled by Chart.js via `react-chartjs-2` wrappers.
 
@@ -76,6 +145,9 @@ Environment variables (`.env.local`):
 OPENAI_API_KEY=sk-...           # optional; enables real AI insights
 NEXT_PUBLIC_MAX_FILE_SIZE_MB=50
 NEXT_PUBLIC_SUPPORTED_FORMATS=csv,json,xlsx
+# NEXT_PUBLIC_INSIGHTS_ENDPOINT=https://your-domain.com/api/insights
+
+# Alternate key names also supported: NEXT_PUBLIC_OPENAI_API_KEY, VITE_OPENAI_API_KEY.
 ```
 
 Run dev server:

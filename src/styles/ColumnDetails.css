@@ -1,6 +1,22 @@
-.panel {background:#ffffff; padding:1rem 1.1rem; border:1px solid #e5e7eb; border-radius: var(--radius-md); margin-bottom:1rem;}
-.analysis-layout {display:block;}
-.analysis-grid {display:grid; gap:1.25rem; grid-template-columns: 340px 1fr;}
-.analysis-left > * {margin-bottom:1rem;}
-.analysis-right > * {margin-bottom:1rem;}
-@media (max-width: 900px){ .analysis-grid {grid-template-columns:1fr;} }
+.analysis-layout {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.analysis-grid {
+	display: grid;
+	gap: 1.35rem;
+	grid-template-columns: 340px 1fr;
+}
+
+.analysis-left > *,
+.analysis-right > * {
+	margin-bottom: 1.15rem;
+}
+
+@media (max-width: 980px) {
+	.analysis-grid {
+		grid-template-columns: 1fr;
+	}
+}

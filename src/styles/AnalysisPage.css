@@ -1,21 +1,87 @@
-.site-header-inner {display:flex; flex-direction:column; gap:.35rem;}
-.brand {font-size:1.1rem;}
-.tagline {font-size:.75rem; opacity:.7;}
+.analysis-layout {
+	padding-top: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
 
-.analysis-layout {padding-top:1rem;}
-.analysis-grid {display:grid; gap:1.25rem; grid-template-columns:320px 1fr; align-items:start;}
-@media (max-width:1023px){ .analysis-grid {grid-template-columns:280px 1fr;} }
-@media (max-width:767px){ .analysis-grid {grid-template-columns:1fr;} }
+.analysis-grid {
+	display: grid;
+	grid-template-columns: 320px 1fr;
+	gap: 1.35rem;
+	align-items: flex-start;
+}
 
-.panel, .card {background:var(--surface); border:1px solid var(--border); border-radius: var(--radius-md); padding:1rem 1.1rem;}
-.panel h3 {margin-top:0; font-size:.95rem; font-weight:600;}
+@media (max-width: 1150px) {
+	.analysis-grid {
+		grid-template-columns: 280px 1fr;
+	}
+}
 
-.charts-grid {margin-top:.5rem;}
+@media (max-width: 900px) {
+	.analysis-grid {
+		grid-template-columns: 1fr;
+	}
+}
 
-/* Home cards refinement */
-.card {display:flex; flex-direction:column; gap:.4rem; min-height:140px;}
-.card h3 {margin:.25rem 0 .25rem; font-weight:600; font-size:1rem;}
-.card p {font-size:.75rem; line-height:1.4; opacity:.8;}
+.panel h3 {
+	margin: 0 0 0.35rem;
+	font-size: 0.95rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
 
-/* Improve grid for home page */
-.grid {grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+.panel h2,
+.panel h4 {
+	margin: 0;
+}
+
+
+.panel-muted {
+	color: var(--color-muted);
+	font-size: 0.85rem;
+}
+
+.analysis-left,
+.analysis-right {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.stats-block {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 0.8rem;
+}
+
+.stat-pill {
+	background: var(--surface-1);
+	border-radius: var(--radius-xs);
+	border: 1px solid var(--border);
+	padding: 0.75rem 0.9rem;
+}
+
+.stat-pill span {
+	display: block;
+}
+
+.stat-label {
+	font-size: 0.75rem;
+	color: var(--color-muted);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.stat-value {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.charts-grid {
+	margin-top: 0.75rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 1rem;
+}

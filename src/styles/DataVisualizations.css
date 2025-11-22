@@ -1,2 +1,13 @@
-.charts-grid {display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
-.chart-item {background:#ffffff; padding:.5rem; border:1px solid #e5e7eb; border-radius: var(--radius-sm);}
+.charts-grid {
+	display: grid;
+	gap: 1.1rem;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.chart-item {
+	background: var(--surface-1);
+	border-radius: var(--radius-md);
+	border: 1px solid var(--border);
+	padding: 0.9rem 1rem 1rem;
+	box-shadow: var(--shadow-card);
+}

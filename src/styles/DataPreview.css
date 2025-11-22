@@ -1,4 +1,42 @@
-.table-wrapper {overflow:auto; max-height:340px; border:1px solid var(--color-fg); border-opacity:.1;}
-.preview-table {border-collapse: collapse; width:100%; font-size:.75rem;}
-.preview-table th, .preview-table td {border:1px solid #e5e7eb; padding:4px 6px; text-align:left;}
-.preview-table th {background:#f3f4f6; position:sticky; top:0; z-index:1;}
+.table-wrapper {
+	overflow: auto;
+	max-height: 360px;
+	border-radius: var(--radius-md);
+	border: 1px solid var(--border);
+	background: var(--surface-1);
+	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+}
+
+.preview-table {
+	border-collapse: separate;
+	border-spacing: 0;
+	width: 100%;
+	font-size: 0.78rem;
+	min-width: 560px;
+}
+
+.preview-table thead th {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	background: linear-gradient(120deg, rgba(15,23,42,0.95), rgba(15,23,42,0.8));
+	font-size: 0.7rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
+
+.preview-table th,
+.preview-table td {
+	padding: 0.55rem 0.65rem;
+	border: 1px solid rgba(148,163,184,0.14);
+	text-align: left;
+}
+
+.preview-table tbody tr:nth-child(odd) {
+	background: rgba(148,163,184,0.05);
+}
+
+.preview-table tbody tr:hover {
+	background: rgba(139,92,246,0.08);
+}

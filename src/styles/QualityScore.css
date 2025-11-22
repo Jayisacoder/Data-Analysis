@@ -1,11 +1,73 @@
-.quality-card {border:1px solid var(--border); padding:0; border-radius: var(--radius-md); background: var(--surface); overflow:hidden;}
-.quality-score {display:flex; align-items:center; gap:1rem; padding:1rem 1rem; color:#fff;}
-.quality-score.excellent {background: var(--color-excellent);}
-.quality-score.good {background: var(--color-good);}
-.quality-score.poor {background: var(--color-poor);}
-.quality-score.neutral {background: var(--color-neutral);}
-.score-value {font-size:2.4rem; font-weight:700; line-height:1; font-family: var(--font-mono);}
-.score-details {display:flex; flex-direction:column; gap:.35rem;}
-.score-label {font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; font-weight:600;}
-.metric-list {list-style:none; margin:0; padding:.75rem 1rem 1rem; font-size:.65rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:.4rem;}
-.metric-list li {opacity:.85; background:var(--color-bg); padding:.4rem .5rem; border-radius: var(--radius-sm); border:1px solid var(--border);}
+.quality-card {
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	background: var(--surface-0);
+	overflow: hidden;
+	box-shadow: var(--shadow-card);
+}
+
+.quality-score {
+	display: flex;
+	gap: 1.25rem;
+	padding: 1.35rem 1.5rem 1.4rem;
+	color: #fff;
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+	background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 55%),
+		var(--color-accent-gradient, linear-gradient(120deg, var(--color-accent), var(--color-accent-secondary)));
+}
+
+.quality-score.good {
+	background: linear-gradient(120deg, #16a34a, #22d3ee);
+}
+
+.quality-score.poor {
+	background: linear-gradient(120deg, #f43f5e, #f97316);
+}
+
+.quality-score.neutral {
+	background: linear-gradient(120deg, #475569, #94a3b8);
+}
+
+.score-value {
+	font-size: 2.8rem;
+	font-weight: 700;
+	line-height: 1;
+	font-family: var(--font-mono);
+}
+
+.score-details {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.score-label {
+	font-size: 0.72rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.score-trend {
+	font-size: 0.8rem;
+	color: rgba(255,255,255,0.75);
+}
+
+.metric-list {
+	list-style: none;
+	margin: 0;
+	padding: 1.1rem 1.35rem 1.35rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 0.75rem;
+}
+
+.metric-list li {
+	background: var(--surface-1);
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--border);
+	padding: 0.6rem 0.75rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	font-size: 0.78rem;
+}

@@ -4,6 +4,7 @@ import "../styles/DataPreview.css";
 import "../styles/QualityScore.css";
 import "../styles/DataVisualizations.css";
 import "../styles/ColumnDetails.css";
+import "../styles/AIInsights.css";
 import "../styles/AnalysisPage.css";
 import "../styles/Wireframe.css";
 import NavBar from "../components/NavBar";
