@@ -19,7 +19,29 @@ export function parseFile(file) {
       reader.onload = e => {
         try {
           const data = JSON.parse(e.target.result);
-          const rows = Array.isArray(data) ? data : [data];
+          let rows;
+
+          // column-major JSON: { colA: [..], colB: [..], ... }
+          if (data && typeof data === 'object' && !Array.isArray(data)) {
+            const keys = Object.keys(data);
+            const allArrays = keys.length > 0 && keys.every(k => Array.isArray(data[k]));
+            if (allArrays) {
+              // find longest array length, convert to row-oriented structure
+              const lengths = keys.map(k => data[k].length);
+              const maxLen = Math.max(...lengths);
+              rows = Array.from({ length: maxLen }, (_, i) => {
+                const row = {};
+                keys.forEach(k => {
+                  row[k] = data[k][i] !== undefined ? data[k][i] : null;
+                });
+                return row;
+              });
+            } else {
+              rows = [data];
+            }
+          } else {
+            rows = Array.isArray(data) ? data : [data];
+          }
           resolve({ rows, meta: { fields: Object.keys(rows[0] || {}) } });
         } catch (err) { reject(err); }
       };

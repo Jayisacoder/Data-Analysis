@@ -12,7 +12,7 @@ export default function NavBar(){
         <li><Link href="/preview" aria-disabled={!fileMeta}>Preview</Link></li>
         <li><Link href="/dashboard" aria-disabled={!fileMeta}>Dashboard</Link></li>
         <li><Link href="/details" aria-disabled={!fileMeta}>Details</Link></li>
-        <li><Link href="/docs" aria-disabled>Docs</Link></li>
+        {/* Docs page removed — not required for this project */}
       </ul>
       <div className="nav-status">{fileMeta ? `${fileMeta.name} • ${phase}` : 'No file loaded'}</div>
     </nav>

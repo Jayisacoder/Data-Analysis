@@ -65,4 +65,34 @@ describe('insights API route', () => {
     expect(Array.isArray(payload.insights)).toBe(true);
     expect(payload.insights.length).toBeGreaterThan(0);
   });
+
+  it('parses a single-line compact JSON response', async () => {
+    process.env.OPENAI_API_KEY = 'fake-key-xyz';
+    const compact = JSON.stringify({ insights: [{ title: 'Compact', recommendation: 'Do X' }] });
+    const fakeOpenAi = { choices: [ { message: { content: compact } } ], model: 'compact-model' };
+    global.fetch = vi.fn().mockResolvedValue({ ok: true, text: async () => JSON.stringify(fakeOpenAi) });
+
+    const req = new Request('http://localhost/api/insights', { method: 'POST', body: JSON.stringify({ analysis: simpleAnalysis }), headers: { 'Content-Type': 'application/json' } });
+    const res = await POST(req);
+    const payload = JSON.parse(await res.text());
+    expect(payload.source).toBe('openai');
+    expect(payload.model).toBe('compact-model');
+    expect(Array.isArray(payload.insights)).toBe(true);
+    expect(payload.insights[0].title).toBe('Compact');
+  });
+
+  it('extracts JSON wrapped in code fences', async () => {
+    process.env.OPENAI_API_KEY = 'fake-key-xyz';
+    const fenced = "```json\n{" + '"insights": [{"title":"Fence","recommendation":"Do Y"}]' + "}\n```";
+    const fakeOpenAi = { choices: [ { message: { content: fenced } } ], model: 'fence-model' };
+    global.fetch = vi.fn().mockResolvedValue({ ok: true, text: async () => JSON.stringify(fakeOpenAi) });
+
+    const req = new Request('http://localhost/api/insights', { method: 'POST', body: JSON.stringify({ analysis: simpleAnalysis }), headers: { 'Content-Type': 'application/json' } });
+    const res = await POST(req);
+    const payload = JSON.parse(await res.text());
+    expect(payload.source).toBe('openai');
+    expect(payload.model).toBe('fence-model');
+    expect(Array.isArray(payload.insights)).toBe(true);
+    expect(payload.insights[0].title).toBe('Fence');
+  });
 });

@@ -159,13 +159,28 @@ function tryParseJson(text) {
 }
 
 function tryExtractJson(text) {
-  const match = text?.match(/\{[\s\S]*\}/);
-  if (!match) return null;
-  try {
-    return JSON.parse(match[0]);
-  } catch (_) {
-    return null;
+  if (!text) return null;
+  // Remove triple-backtick fenced blocks if present
+  const stripped = text.replace(/```(?:json)?\n?|```/gi, '').trim();
+  // Fast parse: if it looks like a JSON object in one piece, try parsing directly
+  if (/^\{[\s\S]*\}$/.test(stripped)) {
+    try { return JSON.parse(stripped); } catch (_) { /* fallthrough */ }
   }
+
+  // Fallback: find the largest balanced JSON object by scanning for matching braces
+  const start = stripped.indexOf('{');
+  if (start === -1) return null;
+  let depth = 0;
+  for (let i = start; i < stripped.length; i++) {
+    const ch = stripped[i];
+    if (ch === '{') depth++;
+    else if (ch === '}') depth--;
+    if (depth === 0) {
+      const candidate = stripped.slice(start, i + 1);
+      try { return JSON.parse(candidate); } catch (_) { return null; }
+    }
+  }
+  return null;
 }
 
 function normalizeInsights(json, analysis) {
