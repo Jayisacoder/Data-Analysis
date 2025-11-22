@@ -1,0 +1,11 @@
+.quality-card {border:1px solid var(--border); padding:0; border-radius: var(--radius-md); background: var(--surface); overflow:hidden;}
+.quality-score {display:flex; align-items:center; gap:1rem; padding:1rem 1rem; color:#fff;}
+.quality-score.excellent {background: var(--color-excellent);}
+.quality-score.good {background: var(--color-good);}
+.quality-score.poor {background: var(--color-poor);}
+.quality-score.neutral {background: var(--color-neutral);}
+.score-value {font-size:2.4rem; font-weight:700; line-height:1; font-family: var(--font-mono);}
+.score-details {display:flex; flex-direction:column; gap:.35rem;}
+.score-label {font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; font-weight:600;}
+.metric-list {list-style:none; margin:0; padding:.75rem 1rem 1rem; font-size:.65rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:.4rem;}
+.metric-list li {opacity:.85; background:var(--color-bg); padding:.4rem .5rem; border-radius: var(--radius-sm); border:1px solid var(--border);}

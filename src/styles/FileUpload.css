@@ -1,0 +1,9 @@
+.upload-zone {border:2px dashed var(--color-accent); padding:2rem 2.25rem; text-align:center; border-radius: var(--radius-md); background: var(--surface); transition:background .15s,border-color .15s; min-height:180px; display:flex; flex-direction:column; justify-content:center;}
+.upload-zone.dragging {background:#eef6ff; border-color: var(--color-accent-hover);}
+.upload-title {font-weight:600; margin:0; font-size:1rem;}
+.upload-or {opacity:.7; margin:.65rem 0 .4rem; font-size:.7rem; letter-spacing:.5px; text-transform:uppercase;}
+.hidden-input {display:none;}
+.upload-formats {font-size:.75rem; opacity:.7; margin-top:.75rem;}
+.upload-status {color: var(--color-accent); font-size:.85rem;}
+.upload-error {color:#ef4444; font-size:.85rem;}
+.upload-success {color:#10b981; font-size:.85rem; margin-top:.5rem;}

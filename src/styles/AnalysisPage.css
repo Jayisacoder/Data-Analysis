@@ -1,0 +1,21 @@
+.site-header-inner {display:flex; flex-direction:column; gap:.35rem;}
+.brand {font-size:1.1rem;}
+.tagline {font-size:.75rem; opacity:.7;}
+
+.analysis-layout {padding-top:1rem;}
+.analysis-grid {display:grid; gap:1.25rem; grid-template-columns:320px 1fr; align-items:start;}
+@media (max-width:1023px){ .analysis-grid {grid-template-columns:280px 1fr;} }
+@media (max-width:767px){ .analysis-grid {grid-template-columns:1fr;} }
+
+.panel, .card {background:var(--surface); border:1px solid var(--border); border-radius: var(--radius-md); padding:1rem 1.1rem;}
+.panel h3 {margin-top:0; font-size:.95rem; font-weight:600;}
+
+.charts-grid {margin-top:.5rem;}
+
+/* Home cards refinement */
+.card {display:flex; flex-direction:column; gap:.4rem; min-height:140px;}
+.card h3 {margin:.25rem 0 .25rem; font-weight:600; font-size:1rem;}
+.card p {font-size:.75rem; line-height:1.4; opacity:.8;}
+
+/* Improve grid for home page */
+.grid {grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}

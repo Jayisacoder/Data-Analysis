@@ -1,0 +1,4 @@
+.table-wrapper {overflow:auto; max-height:340px; border:1px solid var(--color-fg); border-opacity:.1;}
+.preview-table {border-collapse: collapse; width:100%; font-size:.75rem;}
+.preview-table th, .preview-table td {border:1px solid #e5e7eb; padding:4px 6px; text-align:left;}
+.preview-table th {background:#f3f4f6; position:sticky; top:0; z-index:1;}

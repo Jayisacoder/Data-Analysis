@@ -1,0 +1,11 @@
+id,name,age,email,country
+1,Alice,34,alice@example.com,US
+2,Bob,29,bob@example.com,US
+3,Carla,27,carla@example.com,CA
+4,Dan,45,dan@example.com,US
+5,Eve,38,eve@example.com,UK
+6,Fred,,fred@example.com,US
+7,Gina,31,gina@example.com,US
+8,Hank,50,hank@example.com,DE
+9,Ivy,22,ivy@example.com,US
+10,Jon,41,jon@example.com,US

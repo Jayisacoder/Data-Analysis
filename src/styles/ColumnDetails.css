@@ -1,0 +1,6 @@
+.panel {background:#ffffff; padding:1rem 1.1rem; border:1px solid #e5e7eb; border-radius: var(--radius-md); margin-bottom:1rem;}
+.analysis-layout {display:block;}
+.analysis-grid {display:grid; gap:1.25rem; grid-template-columns: 340px 1fr;}
+.analysis-left > * {margin-bottom:1rem;}
+.analysis-right > * {margin-bottom:1rem;}
+@media (max-width: 900px){ .analysis-grid {grid-template-columns:1fr;} }
