@@ -1,0 +1,11 @@
+id,product,region,units,price
+1,Widget A,North,10,25.5
+2,Widget B,South,5,40
+3,Widget A,East,8,25.5
+4,Widget C,West,,55
+5,Widget B,North,2,40
+6,Widget A,South,12,25.5
+7,Widget D,East,1,70
+8,Widget C,North,7,55
+9,Widget C,South,7,55
+10,Widget A,West,3,25.5

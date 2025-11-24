@@ -11,6 +11,16 @@ export default function DataVisualizations() {
   const completeness = Object.entries(analysis.stats).map(([col, st]) => ({ col, value: (1 - st.missing/st.total)*100 }));
   const types = Object.entries(analysis.stats).reduce((acc,[col, st])=> { acc[st.type] = (acc[st.type]||0)+1; return acc; }, {});
 
+  // Data quality issues summary for pie chart
+  const missingCols = Object.entries(analysis.stats).filter(([_, st]) => st.missing > 0).length;
+  const outlierCols = Object.entries(analysis.stats).filter(([_, st]) => st.outliers > 0).length;
+  const duplicateCols = Object.entries(analysis.stats).filter(([_, st]) => st.unique < st.total).length;
+  const cleanCols = Object.entries(analysis.stats).filter(([_, st]) => st.missing === 0 && st.outliers === 0 && st.unique === st.total).length;
+
+  const qualityLabels = ['Clean', 'Missing Values', 'Outliers', 'Duplicates'];
+  const qualityData = [cleanCols, missingCols, outlierCols, duplicateCols];
+  const qualityColors = ['#10b981', '#f59e0b', '#ef4444', '#6366f1'];
+
   return (
     <div className="panel">
       <h3>Data Quality Visualizations</h3>
@@ -23,9 +33,26 @@ export default function DataVisualizations() {
         </div>
         <div className="chart-item">
           <Pie data={{
-            labels: Object.keys(types),
-            datasets: [{ data: Object.values(types), backgroundColor: ['#10b981','#f59e0b','#6b7280'] }]
-          }} options={{ responsive:true }} />
+            labels: qualityLabels,
+            datasets: [{ data: qualityData, backgroundColor: qualityColors }]
+          }} options={{
+            responsive:true,
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.parsed || 0;
+                    if (label === 'Clean') return `${label}: ${value} columns with no issues`;
+                    if (label === 'Missing Values') return `${label}: ${value} columns have missing data`;
+                    if (label === 'Outliers') return `${label}: ${value} columns have outliers`;
+                    if (label === 'Duplicates') return `${label}: ${value} columns have duplicates`;
+                    return `${label}: ${value}`;
+                  }
+                }
+              }
+            }
+          }} />
         </div>
       </div>
     </div>

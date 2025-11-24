@@ -94,14 +94,16 @@ async function analyzeQualityInsights({ analysis, model, apiKey }) {
   throw new Error('Model returned an empty response');
 }
 
-const SYSTEM_PROMPT = `You are the Data Quality Copilot. Given a dataset quality analysis summary, return concise remediation insights that a business analyst can act on.
+const SYSTEM_PROMPT = `You are the Data Quality Copilot. Given a dataset quality analysis summary, return actionable recommendations, business impact explanations, and next steps that a business analyst or decision maker can act on.
 
 Respond ONLY with JSON using this schema:
 {
   "insights": [
     {
       "title": string,
-      "recommendation": string
+      "recommendation": string,
+      "business_impact": string,
+      "next_steps": string
     }
   ]
 }
