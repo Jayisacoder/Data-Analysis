@@ -29,7 +29,9 @@
 	font-size: 0.95rem;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	color: var(--color-muted);
+	color: var(--color-fg);
+	font-weight: 700;
+	opacity: 1;
 }
 
 .panel h2,

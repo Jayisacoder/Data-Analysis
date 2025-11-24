@@ -35,10 +35,11 @@
 	color: var(--color-muted);
 }
 
+/* Industry standard: Amber for warnings */
 .insight-pill.warning {
-	border-color: rgba(244,63,94,0.7);
-	color: #fecdd3;
-	background: rgba(244,63,94,0.12);
+	border-color: rgba(245,158,11,0.6);
+	color: #fcd34d;
+	background: rgba(245,158,11,0.15);
 }
 
 .insights-grid {
@@ -81,17 +82,18 @@
 	font-size: 0.65rem;
 }
 
+/* Industry standard severity colors */
 .severity-high .severity-indicator,
 .insight-card.severity-high .severity-indicator {
-	color: #fecaca;
+	color: #fca5a5; /* Red - Critical/High severity */
 }
 
 .insight-card.severity-medium .severity-indicator {
-	color: #fcd34d;
+	color: #fbbf24; /* Amber - Medium severity warnings */
 }
 
 .insight-card.severity-low .severity-indicator {
-	color: #a7f3d0;
+	color: #6ee7b7; /* Green-Teal - Low severity info */
 }
 
 .insight-card h4 {

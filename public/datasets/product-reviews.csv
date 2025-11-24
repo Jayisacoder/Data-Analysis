@@ -1,0 +1,16 @@
+review_id,product_id,product_name,rating,review_date,verified_purchase,helpful_votes,review_text
+R001,P101,Smart Watch Pro,5,2024-11-01,true,15,Great product! Battery lasts for days.
+R002,P101,Smart Watch Pro,4,2024-11-03,true,8,Good quality but a bit expensive.
+R003,P102,Wireless Earbuds,5,2024-11-02,true,22,Amazing sound quality!
+R004,P102,Wireless Earbuds,3,2024-11-05,false,3,Sound is okay but connectivity issues.
+R005,P103,Fitness Tracker,4,2024-11-04,true,12,Does what it says. Easy to use.
+R006,P101,Smart Watch Pro,2,2024-11-06,true,5,Stopped working after 2 weeks.
+R007,P104,Bluetooth Speaker,5,2024-11-07,true,18,Best speaker I've ever owned!
+R008,P103,Fitness Tracker,,2024-11-08,true,2,
+R009,P104,Bluetooth Speaker,4,2024-11-09,false,7,Good bass. Volume could be louder.
+R010,P102,Wireless Earbuds,5,2024-11-10,true,25,Perfect for workouts. Stay in place.
+R011,P105,Gaming Mouse,5,2024-11-11,true,14,Responsive and comfortable grip.
+R012,P105,Gaming Mouse,4,2024-11-12,true,9,Great for gaming but software is buggy.
+R013,P101,Smart Watch Pro,4,2024-11-13,true,11,Stylish design and good features.
+R014,P103,Fitness Tracker,3,2024-11-14,false,,Accuracy of step count is questionable.
+R015,P104,Bluetooth Speaker,5,2024-11-15,true,20,Crystal clear audio. Highly recommend!

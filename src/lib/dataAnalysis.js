@@ -1,7 +1,7 @@
 // Basic data analysis utilities for tabular datasets.
-// Parses CSV (via PapaParse) and JSON; Excel placeholder.
+// Parses CSV (via PapaParse) and JSON; Excel via exceljs.
 import Papa from 'papaparse';
-import * as XLSX from 'xlsx';
+import ExcelJS from 'exceljs';
 
 export function parseFile(file) {
   const name = file.name.toLowerCase();
@@ -49,14 +49,29 @@ export function parseFile(file) {
       reader.readAsText(file);
     } else if (name.endsWith('.xlsx') || name.endsWith('.xls')) {
       const reader = new FileReader();
-      reader.onload = e => {
+      reader.onload = async e => {
         try {
-          const data = new Uint8Array(e.target.result);
-          const wb = XLSX.read(data, { type: 'array' });
-          const sheetName = wb.SheetNames[0];
-          const sheet = wb.Sheets[sheetName];
-          const json = XLSX.utils.sheet_to_json(sheet, { defval: '' });
-          resolve({ rows: json, meta: { fields: Object.keys(json[0] || {}) } });
+          const workbook = new ExcelJS.Workbook();
+          await workbook.xlsx.load(e.target.result);
+          const worksheet = workbook.worksheets[0];
+          const json = [];
+          const headers = [];
+          
+          worksheet.eachRow((row, rowNumber) => {
+            if (rowNumber === 1) {
+              row.eachCell((cell) => {
+                headers.push(cell.value);
+              });
+            } else {
+              const rowData = {};
+              row.eachCell((cell, colNumber) => {
+                rowData[headers[colNumber - 1]] = cell.value !== null ? cell.value : '';
+              });
+              json.push(rowData);
+            }
+          });
+          
+          resolve({ rows: json, meta: { fields: headers } });
         } catch (err) { reject(err); }
       };
       reader.onerror = reject;
@@ -149,8 +164,10 @@ function computeQualityMetrics(colStats, totalRows){
 }
 
 export function qualityState(score) {
-  if (score >= 90) return { label: 'Excellent', color: '#10b981' };
-  if (score >= 70) return { label: 'Good', color: '#f59e0b' };
-  if (score > 0) return { label: 'Poor', color: '#ef4444' };
-  return { label: 'Neutral', color: '#6b7280' };
+  // Industry standard data quality thresholds
+  if (score >= 85) return { label: 'Excellent', color: '#10b981' }; // Green: 85-100
+  if (score >= 70) return { label: 'Good', color: '#06b6d4' };      // Blue-Green: 70-84
+  if (score >= 50) return { label: 'Fair', color: '#f59e0b' };      // Amber: 50-69
+  if (score > 0) return { label: 'Poor', color: '#ef4444' };        // Red: 0-49
+  return { label: 'Neutral', color: '#64748b' };
 }

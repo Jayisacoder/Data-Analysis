@@ -11,7 +11,7 @@
   --color-accent-hover: #4f46e5;
   --color-accent-secondary: #06b6d4; /* teal secondary */
   --color-accent-gradient: linear-gradient(135deg,#6366f1 0%, #06b6d4 100%);
-  --color-danger: #dc2626;
+  --color-danger: #ef4444;
   --color-warn: #f59e0b;
   --color-success: #10b981;
   --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
@@ -70,7 +70,7 @@ header.site-header {
 
 .site-header-inner { max-width:var(--max-width); margin:0 auto; padding:.55rem 1.25rem .55rem; display:flex; align-items:center; justify-content:space-between; gap:1.25rem; }
 .brand-block { display:flex; flex-direction:column; gap:.25rem; }
-.brand { font-size:1.05rem; font-weight:600; letter-spacing:.3px; background:var(--color-accent-gradient); -webkit-background-clip:text; color:transparent; }
+.brand { font-size:1.05rem; font-weight:600; letter-spacing:.3px; background:var(--color-accent-gradient); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .tagline { font-size:.65rem; font-weight:500; opacity:.65; letter-spacing:.4px; }
 
 .nav-bar { display:flex; align-items:center; gap:1.25rem; }

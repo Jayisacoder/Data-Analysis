@@ -13,19 +13,31 @@
 	color: #fff;
 	border-bottom: 1px solid rgba(255,255,255,0.08);
 	background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 55%),
-		var(--color-accent-gradient, linear-gradient(120deg, var(--color-accent), var(--color-accent-secondary)));
+		linear-gradient(120deg, #64748b, #94a3b8);
 }
 
+/* Industry standard: Excellent = Green (85-100) */
+.quality-score.excellent {
+	background: linear-gradient(120deg, #10b981, #059669);
+}
+
+/* Industry standard: Good = Blue-Green (70-84) */
 .quality-score.good {
-	background: linear-gradient(120deg, #16a34a, #22d3ee);
+	background: linear-gradient(120deg, #06b6d4, #0891b2);
 }
 
+/* Industry standard: Fair = Amber/Yellow (50-69) */
+.quality-score.fair {
+	background: linear-gradient(120deg, #f59e0b, #d97706);
+}
+
+/* Industry standard: Poor = Red (<50) */
 .quality-score.poor {
-	background: linear-gradient(120deg, #f43f5e, #f97316);
+	background: linear-gradient(120deg, #ef4444, #dc2626);
 }
 
 .quality-score.neutral {
-	background: linear-gradient(120deg, #475569, #94a3b8);
+	background: linear-gradient(120deg, #64748b, #94a3b8);
 }
 
 .score-value {

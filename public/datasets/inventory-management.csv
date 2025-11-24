@@ -1,0 +1,16 @@
+sku,product_name,category,quantity_in_stock,reorder_level,unit_cost,supplier,last_restock_date
+SKU001,Laptop Pro 15,Electronics,45,20,850.00,TechSupply Co,2024-10-15
+SKU002,Wireless Mouse,Accessories,234,50,12.50,OfficeGear Inc,2024-11-01
+SKU003,USB-C Cable,Accessories,456,100,8.99,CableWorld,2024-10-28
+SKU004,Monitor 27 inch,Electronics,18,15,320.00,TechSupply Co,2024-11-10
+SKU005,Desk Chair,Furniture,67,25,189.99,FurniturePlus,2024-09-22
+SKU006,Standing Desk,Furniture,12,10,450.00,FurniturePlus,2024-10-05
+SKU007,Keyboard Mechanical,Accessories,89,30,79.99,OfficeGear Inc,2024-11-08
+SKU008,Webcam HD,Electronics,,20,65.00,TechSupply Co,2024-10-20
+SKU009,Headphones Wireless,Electronics,156,40,125.00,AudioTech,2024-11-12
+SKU010,Mouse Pad,Accessories,567,150,5.99,OfficeGear Inc,2024-11-15
+SKU011,HDMI Cable,Accessories,345,80,15.50,CableWorld,
+SKU012,Laptop Bag,Accessories,78,30,35.00,BagMasters,2024-10-18
+SKU013,Docking Station,Electronics,23,15,180.00,TechSupply Co,2024-11-05
+SKU014,Ergonomic Keyboard,Accessories,45,25,95.00,OfficeGear Inc,2024-10-30
+SKU015,Desk Lamp LED,Furniture,134,40,42.50,LightingPro,2024-11-11

@@ -18,8 +18,8 @@
   --color-accent-secondary: #0ea5e9;
   --color-accent-tertiary: #f97316;
   --color-accent-gradient: linear-gradient(120deg, #8b5cf6, #0ea5e9);
-  --color-success: #22c55e;
-  --color-warn: #facc15;
+  --color-success: #10b981;
+  --color-warn: #f59e0b;
   --color-danger: #ef4444;
   --border: rgba(148,163,184,0.35);
   --border-strong: rgba(148,163,184,0.55);
@@ -40,10 +40,11 @@
   /* Back-compat aliases */
   --color-bg: var(--page-bg);
   --surface: var(--surface-2);
-  --color-excellent: var(--color-success);
-  --color-good: #f59e0b;
+  --color-excellent: #10b981;
+  --color-good: #06b6d4;
+  --color-fair: #f59e0b;
   --color-poor: var(--color-danger);
-  --color-neutral: #1e293b;
+  --color-neutral: #64748b;
 }
 
 @media (prefers-color-scheme: light) {
@@ -141,9 +142,10 @@ header.site-header {
 .brand {
   font-size: 1.05rem;
   letter-spacing: 0.04em;
-  font-weight: 600;
-  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-secondary));
+  font-weight: 700;
+  background: linear-gradient(120deg, #a78bfa, #60a5fa);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
@@ -151,7 +153,8 @@ header.site-header {
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: rgba(226,232,240,0.95);
+  font-weight: 500;
 }
 
 .nav-bar {

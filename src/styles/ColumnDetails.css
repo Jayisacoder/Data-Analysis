@@ -1,3 +1,52 @@
+.nav-bar a, .nav-bar a:visited, .nav-bar a:active {
+	color: #e2e8f0 !important;
+	font-weight: 500;
+}
+.nav-bar a:hover, .nav-bar a:focus {
+	color: #fff !important;
+}
+.nav-status {
+	background: #f8fafc !important;
+	color: #232946 !important;
+	font-weight: 600;
+	border: 1px solid #b6bad4 !important;
+	box-shadow: none;
+}
+.nav-status {
+	background: #f8fafc !important;
+	color: #232946 !important;
+	font-weight: 600;
+	border: 1px solid #b6bad4 !important;
+	box-shadow: none;
+}
+.secondary-btn {
+	color: #232946 !important;
+	background: #e0e7ef !important;
+	border: 1px solid #b6bad4 !important;
+	font-weight: 600;
+	box-shadow: none;
+}
+.secondary-btn:hover, .secondary-btn:focus {
+	background: #c7d2fe !important;
+	color: #232946 !important;
+	border-color: #a78bfa !important;
+}
+.preview-table th {
+	background: #232946 !important;
+	color: #f8fafc !important;
+	font-weight: 700;
+	border-bottom: 2px solid #a78bfa;
+}
+
+.preview-table td {
+	background: #f8fafc !important;
+	color: #232946 !important;
+}
+
+.panel.detailed-accordion {
+	background: #f8fafc !important;
+	box-shadow: 0 2px 16px rgba(44,62,80,0.08);
+}
 .analysis-layout {
 	display: flex;
 	flex-direction: column;
@@ -21,32 +70,30 @@
 	}
 }
 
-/* High-contrast text for per-column details */
-.panel, .panel * {
-	color: var(--color-fg) !important;
-}
-
-/* Ensure the detailed per-column accordion uses high-contrast text */
-.detailed-accordion, .detailed-accordion * {
-	color: #ffffff !important;
-}
-
-.detailed-accordion .suggest-list li,
-.detailed-accordion .acc-row,
-.detailed-accordion .acc-panel {
-	color: #e6eef8 !important; /* slightly muted but readable on dark */
-}
-
-.panel h3, .panel-title {
+/* High-contrast text for better readability */
+.panel-title {
 	color: var(--color-fg) !important;
 	font-weight: 700;
+	font-size: 0.95rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	opacity: 1 !important;
 }
 
-.panel .issue-item, .panel .stat-label, .panel .stat-value, .panel p {
+
+.detailed-accordion .panel-title,
+.detailed-accordion .acc-toggle,
+.detailed-accordion .acc-row,
+.detailed-accordion .acc-row strong,
+.detailed-accordion .suggest-list li {
+	color: #1e293b !important;
+	opacity: 1 !important;
+	text-shadow: none !important;
+	font-weight: 600;
+}
+
+.panel h3 {
 	color: var(--color-fg) !important;
-}
-
-/* Keep small supporting text slightly muted */
-.panel .suggest-list li, .panel .acc-row, .panel .acc-panel {
-	color: var(--color-muted);
+	font-weight: 700;
+	opacity: 1 !important;
 }
