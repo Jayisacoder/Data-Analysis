@@ -37,7 +37,7 @@ export function buildHeuristicInsightsBundle(analysis, { reason, source = 'heuri
       title: 'Upload data to unlock insights',
       category: 'Readiness',
       severity: 'info',
-      summary: 'No profile statistics were detected. Provide at least one column so the engine can evaluate completeness, uniqueness, and validity.',
+      summary: 'No statistics were detected. Provide at least one column so the engine can evaluate completeness, uniqueness, and validity.',
       recommendation: 'Upload a dataset with column headers in the first row or re-run the profiling step.',
       actions: [
         'Export a representative CSV or Excel sample with headers.',
@@ -194,7 +194,7 @@ function qualityTitle(score) {
 }
 
 function recommendationForScore(score) {
-  if (score === null || score === undefined) return 'Re-run the profiler once a dataset is loaded to compute a score.';
+  if (score === null || score === undefined) return 'Re-run the analysis once a dataset is loaded to compute a score.';
   if (score >= 85) return 'Maintain active monitoring and share the score with business stakeholders as a KPI.';
   if (score >= 65) return 'Prioritize completeness and uniqueness issues called out above to lift the score above 80.';
   return 'Launch a remediation sprint focusing on the top three failing columns and codify acceptance thresholds.';
@@ -203,7 +203,7 @@ function recommendationForScore(score) {
 function nextStepsForScore(score) {
   if (score === null || score === undefined) {
     return [
-      'Verify the profiler ran on the uploaded dataset and produced column statistics.',
+      'Verify the analysis ran on the uploaded dataset and produced column statistics.',
       'Re-upload a clean sample if the original file was empty.'
     ];
   }

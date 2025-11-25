@@ -13,7 +13,7 @@ export default function AIInsights() {
       <div className="ai-insights-head">
         <div>
           <h3>AI-Powered Insights</h3>
-          <p className="ai-insights-subtext">Targeted remediation guidance based on the current profile.</p>
+          <p className="ai-insights-subtext">Targeted remediation guidance based on the current analysis.</p>
         </div>
         <button
           className="cta-btn"
