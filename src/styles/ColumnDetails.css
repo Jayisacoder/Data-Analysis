@@ -44,7 +44,8 @@
 }
 
 .panel.detailed-accordion {
-	background: #f8fafc !important;
+	/* Use shared panel surface so the outline matches the top preview panel */
+	background: var(--surface-1) !important;
 	box-shadow: 0 2px 16px rgba(44,62,80,0.08);
 }
 .analysis-layout {
@@ -90,6 +91,23 @@
 	opacity: 1 !important;
 	text-shadow: none !important;
 	font-weight: 600;
+}
+
+/* Make each accordion item appear as a white rounded box inside the panel */
+.detailed-accordion .acc-item {
+	background: #ffffff;
+	border: 1px solid var(--border);
+	color: var(--color-fg);
+}
+
+.detailed-accordion .acc-toggle {
+	background: transparent;
+	color: var(--color-fg);
+}
+
+.detailed-accordion .acc-panel {
+	background: #ffffff;
+	color: var(--color-fg);
 }
 
 .panel h3 {
