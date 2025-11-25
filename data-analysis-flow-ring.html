@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Data Analysis Flow — SVG Viewer</title>
+  <style>body{margin:0;background:#fff;font-family:Inter,Arial,Helvetica,sans-serif;color:#22303f} .wrap{max-width:1200px;margin:24px auto;padding:12px}</style>
+</head>
+<body>
+  <div class="wrap">
+    <h2>Data Analysis Flow — SVG Viewer</h2>
+    <p>If the raw SVG didn't load, open this HTML file in your browser to view the diagram. You can also <a href="./data-analysis-flow-ring.svg" download>download the SVG</a>.</p>
+
+<!-- BEGIN EMBEDDED SVG -->
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="640" viewBox="0 0 1400 820" xmlns="http://www.w3.org/2000/svg" aria-label="Data Analysis Flow">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22303f"/>
+    </marker>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+    <style>
+      .box { fill:#e6f1fb; stroke:#bfd7ee; stroke-width:2; rx:18; ry:18; filter:url(#softShadow) }
+      .box-text { font-family: Inter, Arial, sans-serif; font-size:14px; fill:#082433; font-weight:700 }
+      .box-sub { font-size:12px; fill:#0b3b5a; font-weight:500 }
+      .arrow-label { font-family: Inter, Arial, sans-serif; font-size:12px; fill:#1f2a33 }
+      .badge { fill:#fff; stroke:#cfe6f9; rx:6; ry:6 }
+      .badge-text { font-family: Inter, Arial, sans-serif; font-size:11px; fill:#0b3b5a; font-weight:600 }
+      .note { font-family: Inter, Arial, sans-serif; font-size:12px; fill:#42515a }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <g id="box-client">
+    <rect class="box" x="590" y="40" width="220" height="110" rx="18" ry="18"/>
+    <text class="box-text" x="700" y="75" text-anchor="middle">Client / Browser (UI)</text>
+    <text class="box-sub" x="700" y="96" text-anchor="middle">Uploads files • Displays results</text>
+  </g>
+
+  <g id="box-client-app">
+    <rect class="box" x="930" y="170" width="220" height="110" rx="18" ry="18"/>
+    <text class="box-text" x="1040" y="205" text-anchor="middle">Client App</text>
+    <text class="box-sub" x="1040" y="226" text-anchor="middle">Prepare & send API request</text>
+  </g>
+
+  <g id="box-server">
+    <rect class="box" x="1010" y="420" width="220" height="110" rx="18" ry="18"/>
+    <text class="box-text" x="1120" y="455" text-anchor="middle">Server / API Routes</text>
+    <text class="box-sub" x="1120" y="476" text-anchor="middle">Validate • Orchestrate processing</text>
+  </g>
+
+  <g id="box-data-api">
+    <rect class="box" x="590" y="610" width="220" height="110" rx="18" ry="18"/>
+    <text class="box-text" x="700" y="645" text-anchor="middle">Data Analysis API (external)</text>
+    <text class="box-sub" x="700" y="666" text-anchor="middle">Heavy processing / AI</text>
+  </g>
+
+  <g id="box-database">
+    <rect class="box" x="160" y="610" width="220" height="110" rx="18" ry="18"/>
+    <text class="box-text" x="270" y="645" text-anchor="middle">Database / Storage</text>
+    <text class="box-sub" x="270" y="666" text-anchor="middle">Persist datasets & results</text>
+  </g>
+
+  <g id="box-response">
+    <rect class="box" x="80" y="420" width="220" height="110" rx="18" ry="18"/>
+    <text class="box-text" x="190" y="455" text-anchor="middle">Response Handler</text>
+    <text class="box-sub" x="190" y="476" text-anchor="middle">Assemble response → Client</text>
+  </g>
+
+  <line x1="700" y1="150" x2="930" y2="215" stroke="#22303f" stroke-width="4" marker-end="url(#arrow)" />
+  <text class="arrow-label" x="820" y="182" text-anchor="middle">Prepare request</text>
+
+  <line x1="1150" y1="225" x2="1150" y2="420" stroke="#22303f" stroke-width="4" marker-end="url(#arrow)" />
+  <text class="arrow-label" x="1180" y="320" text-anchor="start">API Request (POST /api/analysis)</text>
+
+  <line x1="990" y1="540" x2="810" y2="620" stroke="#22303f" stroke-width="4" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="940" y="595" text-anchor="middle">Call Data Analysis API</text>
+
+  <rect class="badge" x="900" y="563" width="96" height="26" rx="6" ry="6"/>
+  <text class="badge-text" x="948" y="581" text-anchor="middle">API Key • Auth</text>
+
+  <line x1="700" y1="720" x2="270" y2="720" stroke="#0b5566" stroke-width="4" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="490" y="740" text-anchor="middle">(Server queries) SELECT / store</text>
+
+  <line x1="260" y1="610" x2="200" y2="530" stroke="#22303f" stroke-width="4" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="230" y="580" text-anchor="middle">Requested data</text>
+
+  <line x1="300" y1="530" x2="700" y2="150" stroke="#22303f" stroke-width="4" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="470" y="330" text-anchor="middle">Response (display results)</text>
+
+  <line x1="780" y1="660" x2="980" y2="540" stroke="#22303f" stroke-width="4" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="880" y="620" text-anchor="middle">Analysis Result</text>
+
+  <g transform="translate(30,740)">
+    <rect x="0" y="0" width="540" height="60" rx="10" fill="#f8fafc" stroke="#dfe9f3"/>
+    <text class="note" x="16" y="22">Legend: dark arrows = control flow; teal arrow = DB/query flow; badge indicates API-key / permission check on external calls.</text>
+  </g>
+
+</svg>
+
+<!-- END EMBEDDED SVG -->
+  </div>
+</body>
+</html>
