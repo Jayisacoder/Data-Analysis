@@ -12,8 +12,8 @@ export default function DataPreview({ highlight=false, title }) {
     analysis.columns.forEach(c => { if (c.outliers && c.outliers.length) outlierMap[c.name] = new Set(c.outliers); });
   }
   return (
-    <div className="panel">
-      <h3>{title || `Data Preview (first ${limited.length} rows)`}</h3>
+    <div className={"panel" + (highlight ? ' data-preview-panel' : '')}>
+      <h3 className="panel-title">{title || `Data Preview (first ${limited.length} rows)`}</h3>
       <div className="table-wrapper">
         <table className="preview-table">
           <thead><tr>{columns.map(c=> <th key={c}>{c}</th>)}</tr></thead>

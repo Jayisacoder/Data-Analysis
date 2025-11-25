@@ -110,6 +110,63 @@
 	color: var(--color-fg);
 }
 
+/* Title badge: display as a small gradient badge sitting above the inner white boxes */
+.detailed-accordion .panel-title {
+	display: inline-block;
+	background: linear-gradient(120deg, rgba(139,92,246,0.28), rgba(14,165,233,0.18));
+	color: #fff !important;
+	padding: 0.35rem 0.6rem;
+	border-radius: 8px;
+	position: relative;
+	z-index: 3;
+	margin: 0 0 0.75rem 0;
+	box-shadow: 0 2px 8px rgba(14,165,233,0.06);
+}
+
+/* Give the accordion list and items spacing so the title doesn't visually attach to the first item */
+.detailed-accordion .accordion-list {
+	margin-top: 0.5rem;
+}
+.detailed-accordion .acc-item {
+	margin-top: 0.5rem;
+}
+
+/* Ensure the accordion panel content remains white and inset from the item border */
+.detailed-accordion .acc-panel {
+	padding: 1rem;
+	border-radius: 8px;
+}
+
+/* Reuse the same badge/title styling for highlighted data preview panels */
+.data-preview-panel .panel-title {
+	display: inline-block;
+	background: linear-gradient(120deg, rgba(139,92,246,0.28), rgba(14,165,233,0.18));
+	color: #fff !important;
+	padding: 0.35rem 0.6rem;
+	border-radius: 8px;
+	position: relative;
+	z-index: 3;
+	margin: 0 0 0.75rem 0;
+	box-shadow: 0 2px 8px rgba(14,165,233,0.06);
+}
+
+.data-preview-panel .table-wrapper {
+	background: #ffffff;
+	border-radius: 12px;
+	padding: 0.35rem;
+	border: 1px solid var(--border);
+}
+
+.data-preview-panel .preview-table thead th {
+	background: linear-gradient(120deg, rgba(15,23,42,0.9), rgba(15,23,42,0.8));
+	color: #f8fafc !important;
+}
+
+.data-preview-panel .preview-table td {
+	background: #fff !important;
+	color: #232946 !important;
+}
+
 .panel h3 {
 	color: var(--color-fg) !important;
 	font-weight: 700;
