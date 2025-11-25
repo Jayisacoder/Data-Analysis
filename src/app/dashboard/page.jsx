@@ -38,7 +38,6 @@ export default function DashboardPage(){
       </section>
       <footer className="panel dash-actions">
         <div style={{display:'flex', gap:'.5rem', flexWrap:'wrap'}}>
-          <button className="secondary-btn" onClick={()=>window.location.href='/preview'}>← Back to Preview</button>
           <button className="primary-btn" onClick={goDetails} disabled={!analysis}>View Detailed Column Insights →</button>
           <button className="secondary-btn" onClick={restartFlow}>Start Over</button>
         </div>
